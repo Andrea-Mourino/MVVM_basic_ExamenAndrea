@@ -7,13 +7,11 @@ import androidx.compose.ui.graphics.Color
  */
 object Datos {
     var numero = 0
+    var cuentaAtras = 5 // valor inicial de la cuenta atrás
 }
 
 /**
  * Colores utilizados
- * color: Color color normal
- * color_suave: Color color suave para el parpadeo, por defecto Transparente
- * txt: String nombre del color
  */
 enum class Colores(val color: Color, val color_suave: Color = Color.Transparent, val txt: String) {
     CLASE_ROJO(color = Color.Red, txt = "roxo"),
@@ -25,11 +23,6 @@ enum class Colores(val color: Color, val color_suave: Color = Color.Transparent,
 
 /**
  * Estados del juego
- * INICIO: estado inicial
- * GENERANDO: generando numero random
- * ADIVINANDO: adivinando el numero
- * @param start_activo: Boolean si el boton Start esta activo
- * @param boton_activo: Boolean si los botones de colores estan activos
  */
 enum class Estados(val start_activo: Boolean, val boton_activo: Boolean) {
     INICIO(start_activo = true, boton_activo = false),
@@ -38,11 +31,12 @@ enum class Estados(val start_activo: Boolean, val boton_activo: Boolean) {
 }
 
 /**
- * Estados auxiliares para corutinas en el ViewModel
- * @param txt: String nombre del estado
+ * Estados auxiliares para la cuenta atrás
  */
 enum class EstadosAuxiliares(val txt: String) {
-    AUX1(txt = "aux1"),
-    AUX2(txt = "aux2"),
-    AUX3(txt = "aux3"),
+    AUX1("5"),
+    AUX2("4"),
+    AUX3("3"),
+    AUX4("2"),
+    AUX5("1");
 }
