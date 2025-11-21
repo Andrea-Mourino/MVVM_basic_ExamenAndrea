@@ -14,9 +14,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 
+/**
+ * Interfaz de usuario principal
+ */
 @Composable
 fun IU(miViewModel: MyViewModel) {
 
+    // Estado observable de la cuenta atrás
     val numero by remember { miViewModel.cuentaAtras }
 
     Column(
@@ -24,8 +28,10 @@ fun IU(miViewModel: MyViewModel) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround
     ) {
+        // Mostrar cuenta atrás
         Text(text = numero.toString(), fontSize = 32.sp)
 
+        // Botones de colores
         Column {
             Row {
                 Boton(miViewModel, Colores.CLASE_ROJO)
@@ -37,15 +43,20 @@ fun IU(miViewModel: MyViewModel) {
             }
         }
 
+        // Botón Start
         Boton_Start(miViewModel, Colores.CLASE_START)
     }
 }
 
+/**
+ * Botón de color individual
+ */
 @Composable
 fun Boton(miViewModel: MyViewModel, enum_color: Colores) {
     val TAG_LOG = "miDebug"
     var _activo by remember { mutableStateOf(miViewModel.estadoLiveData.value!!.boton_activo) }
 
+    // Observa cambios de estado para habilitar/deshabilitar botones
     miViewModel.estadoLiveData.observe(LocalLifecycleOwner.current) {
         _activo = it!!.boton_activo
     }
@@ -65,16 +76,21 @@ fun Boton(miViewModel: MyViewModel, enum_color: Colores) {
     }
 }
 
+/**
+ * Botón Start con efecto de parpadeo
+ */
 @Composable
 fun Boton_Start(miViewModel: MyViewModel, enum_color: Colores) {
     val TAG_LOG = "miDebug"
     var _activo by remember { mutableStateOf(miViewModel.estadoLiveData.value!!.start_activo) }
     var _color by remember { mutableStateOf(enum_color.color) }
 
+    // Observa cambios de estado para habilitar/deshabilitar Start
     miViewModel.estadoLiveData.observe(LocalLifecycleOwner.current) {
         _activo = it!!.start_activo
     }
 
+    // Parpadeo del botón Start mientras está activo
     LaunchedEffect(_activo) {
         while (_activo) {
             _color = enum_color.color_suave
