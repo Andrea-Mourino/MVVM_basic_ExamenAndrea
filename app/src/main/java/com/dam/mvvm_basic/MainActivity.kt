@@ -10,13 +10,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // inicializamos ViewModel
-        val miViewModel: MyViewModel = MyViewModel()
+        val miViewModel = MyViewModel.getInstance()
 
         enableEdgeToEdge()
         setContent {
             MVVM_basicTheme {
-                // llamamos a la IU pasando el ViewModel
                 IU(miViewModel)
             }
         }
