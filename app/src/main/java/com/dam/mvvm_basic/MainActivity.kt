@@ -10,7 +10,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Usamos la instancia singleton
         val miViewModel = MyViewModel.getInstance()
 
         enableEdgeToEdge()

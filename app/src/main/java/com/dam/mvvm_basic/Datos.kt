@@ -36,9 +36,11 @@ enum class Estados(val start_activo: Boolean, val boton_activo: Boolean) {
  * Estados auxiliares para la cuenta atrás
  */
 enum class EstadosAuxiliares(val txt: String) {
-    AUX1("5"),
-    AUX2("4"),
-    AUX3("3"),
-    AUX4("2"),
-    AUX5("1");
+    AUX1("5") { override fun procesarString(msg: String) = msg },
+    AUX2("4") { override fun procesarString(msg: String) = msg.lowercase() },
+    AUX3("3") { override fun procesarString(msg: String) = msg.uppercase() },
+    AUX4("2") { override fun procesarString(msg: String) = msg.lowercase() },
+    AUX5("1") { override fun procesarString(msg: String) = msg.uppercase() };
+
+    abstract fun procesarString(msg: String): String
 }

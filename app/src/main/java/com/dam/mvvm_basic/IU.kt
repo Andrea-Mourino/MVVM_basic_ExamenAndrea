@@ -24,7 +24,6 @@ fun IU(miViewModel: MyViewModel) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround
     ) {
-        // Texto que muestra la cuenta atrás
         Text(text = numero.toString(), fontSize = 32.sp)
 
         Column {
@@ -44,7 +43,6 @@ fun IU(miViewModel: MyViewModel) {
 
 @Composable
 fun Boton(miViewModel: MyViewModel, enum_color: Colores) {
-
     val TAG_LOG = "miDebug"
     var _activo by remember { mutableStateOf(miViewModel.estadoLiveData.value!!.boton_activo) }
 
@@ -69,7 +67,6 @@ fun Boton(miViewModel: MyViewModel, enum_color: Colores) {
 
 @Composable
 fun Boton_Start(miViewModel: MyViewModel, enum_color: Colores) {
-
     val TAG_LOG = "miDebug"
     var _activo by remember { mutableStateOf(miViewModel.estadoLiveData.value!!.start_activo) }
     var _color by remember { mutableStateOf(enum_color.color) }
