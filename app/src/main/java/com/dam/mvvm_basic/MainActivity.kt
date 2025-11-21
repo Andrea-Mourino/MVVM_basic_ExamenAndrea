@@ -10,13 +10,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // inicializamos ViewModel
-        val miViewModel: MyViewModel = MyViewModel()
+        // Usamos la instancia singleton
+        val miViewModel = MyViewModel.getInstance()
 
         enableEdgeToEdge()
         setContent {
             MVVM_basicTheme {
-                // llamamos a la IU pasando el ViewModel
                 IU(miViewModel)
             }
         }
