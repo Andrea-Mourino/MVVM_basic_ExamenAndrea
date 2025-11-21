@@ -37,7 +37,7 @@ class MyViewModel private constructor() : ViewModel() {
     private var jobCuentaAtras: Job? = null
 
     /**
-     * START → crea random → inicia cuenta atrás
+     * START  crea random  inicia cuenta atrás
      */
     fun crearRandom() {
         estadoLiveData.value = Estados.GENERANDO
